@@ -86,7 +86,6 @@ int main()
                    result = -1;
                    std::cout << "Output: " << result << std::endl;
                }
-
             } while (result != -1);
     } else {
         std::cout << "Output: " << -1 << std::endl;
