@@ -19,9 +19,8 @@ bool checkGreaterThanK(int* nums, int length, int k)
     {
         if (nums[i] < k)
             return false;
-        else
-            return true;
     }
+    return true;
 }
 
 int main()
