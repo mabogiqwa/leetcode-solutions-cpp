@@ -14,9 +14,9 @@ void print(int* nums, int length)
 
 int main()
 {
-    int nums[] = {2,1,2};
+    int nums[] = {5,2,5,4,5};
     int length = sizeof(nums) / sizeof(nums[0]);
-    int index, secondIndex;
+    int index, secondIndex, lengthOfV, indexS;
     int k = 2, h, firstGValue, result = 0;
     bool validInt = false;
     std::vector<int> indexStorage;
@@ -32,8 +32,6 @@ int main()
        {
         if (nums[index] > k) { firstGValue = nums[index]; }
 
-        //Run a nested while loop that will check whether each value greater than
-        //k is equal to firstGValue
         while (secondIndex < length)
         {
            if (nums[secondIndex] > k)
@@ -54,8 +52,8 @@ int main()
         index = index + 1;
        }
 
-       int lengthOfV = indexStorage.size();
-       int indexS = 0;
+       indexS = 0;
+       lengthOfV = indexStorage.size();
        if (validInt) {
 
           for (int i = 0; i < length; i++)
