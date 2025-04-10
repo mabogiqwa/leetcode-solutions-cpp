@@ -16,7 +16,7 @@ int main()
 {
     int nums[] = {2,1,2};
     int length = sizeof(nums) / sizeof(nums[0]);
-    int index, secondIndex, sentinel = 0;
+    int index, secondIndex;
     int k = 2, h, firstGValue, result = 0;
     bool validInt = false;
     std::vector<int> indexStorage;
@@ -76,7 +76,6 @@ int main()
        } else {
            result = -1;
            std::cout << "Output: " << result << std::endl;
-           sentinel = -1;
        }
 
     } while (result != -1);
