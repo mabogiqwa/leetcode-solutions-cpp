@@ -14,23 +14,23 @@ void print(int* nums, int length)
 
 int main()
 {
-    int nums[] = {5,2,5,4,5};
-    int index = 0, secondIndex = 0;
+    int nums[] = {2,1,2};
     int length = sizeof(nums) / sizeof(nums[0]);
-    int k = 4;
-    int firstGValue, result = -1;
+    int index, secondIndex, sentinel = 0;
+    int k = 2, h, firstGValue, result = 0;
     bool validInt = false;
     std::vector<int> indexStorage;
 
+    std::cout << "Enter a value for h: ";
+    std::cin >> h;
+
    do
    {
+       index = 0;
+       secondIndex = 0;
        while(index < length)
        {
-        if (nums[index] > k)
-        {
-            firstGValue = nums[index];
-            //std::cout <<firstGValue << std::endl;
-        }
+        if (nums[index] > k) { firstGValue = nums[index]; }
 
         //Run a nested while loop that will check whether each value greater than
         //k is equal to firstGValue
@@ -45,33 +45,48 @@ int main()
                   validInt = false;
                   break;
               }
+           } else {
+               validInt = false;
            }
            secondIndex = secondIndex + 1;
         }
+
         index = index + 1;
        }
-       //std::cout << validInt << std::endl;
 
        int lengthOfV = indexStorage.size();
        int indexS = 0;
        if (validInt) {
+
           for (int i = 0; i < length; i++)
           {
               if (i == indexStorage[indexS])
               {
-                  nums[i] = k;
+                  nums[i] = h;
                   indexS++;
               }
           }
+
+          result++;
+          std::cout << "Output: " << result << std::endl;
           indexStorage.clear();
           print(nums, length);
-          std::cout << "Enter another value for k: ";
-          std::cin >> k;
+          std::cout << "Enter another value for h: ";
+          std::cin >> h;
        } else {
            result = -1;
-           std::cout << "Invalid integer -1" << std::endl;
+           std::cout << "Output: " << result << std::endl;
+           sentinel = -1;
        }
 
     } while (result != -1);
+
+    if (result > 0) {
+            std::cout << result << std::endl;
+    }
+    else if (result == -1) {
+        std::cout << result << std::endl;
+    }
+
     return 0;
 }
