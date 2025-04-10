@@ -81,12 +81,5 @@ int main()
 
     } while (result != -1);
 
-    if (result > 0) {
-            std::cout << result << std::endl;
-    }
-    else if (result == -1) {
-        std::cout << result << std::endl;
-    }
-
     return 0;
 }
