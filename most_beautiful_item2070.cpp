@@ -1,3 +1,4 @@
+//Want to keep the streak
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -17,7 +18,7 @@ public:
     {
         return price;
     }
-    int findBeauty(int price)
+    int getBeauty()
     {
         return beauty;
     }
@@ -26,6 +27,14 @@ private:
     int beauty;
 };
 
+void print(std::vector<int> v)
+{
+    for (int i = 0; i < v.size(); i++)
+    {
+        std::cout << v[i] << " ";
+    }
+}
+
 int binarySearch(int price, const std::vector<int> q)
 {
     int first = 0, difference, smallest;
@@ -33,6 +42,7 @@ int binarySearch(int price, const std::vector<int> q)
     int index = 0, approximateValue;
     bool found = false;
 
+    int iteration = 0;
     while (first <= last)
     {
         int mid = (first + last)/2;
@@ -47,6 +57,8 @@ int binarySearch(int price, const std::vector<int> q)
         //When the cases are reduced to about 7, we will choose
         //the element in queries which has the smallest difference
         if (abs(first - last) < 6) {
+            std::cout << "Iteration: " << iteration << std::endl;
+            std::cout << first << " " << last << std::endl;
             difference = abs(q[first] - price);
             smallest = difference;
             approximateValue = q[first];
@@ -60,6 +72,7 @@ int binarySearch(int price, const std::vector<int> q)
             }
             return approximateValue;
         }
+        iteration += 1;
     }
 }
 
@@ -67,10 +80,12 @@ int binarySearch(int price, const std::vector<int> q)
 int main()
 {
     std::vector<Item> items;
-    std::vector<int> queries = {6,11,13,34,50}; //6,11,13,34,50
+    std::vector<int> queries = {1,2,3,4,5,6}; //6,11,13,34,50
     int prices[5];
+    int price, closestQuery, q;
+    std::vector<int> answer;
 
-    std::sort(vec.begin(), vec.end());
+    std::sort(queries.begin(), queries.end());
     items.push_back(Item(1,2));
     items.push_back(Item(3,2));
     items.push_back(Item(2,4));
@@ -83,7 +98,14 @@ int main()
     }
     std::sort(prices, prices + 5);
 
-    std::cout << binarySearch(4, queries);
+    //std::cout << binarySearch(1, queries);
+
+    for (int i = 0; i < items.size(); i++)
+    {
+        closestQuery = binarySearch(items[i].getPrice(), queries);
+
+        //std::cout << closestQuery << " ";
+    }
 
     return 0;
 }
