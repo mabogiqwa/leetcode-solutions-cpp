@@ -19,7 +19,7 @@ Node* initialize_list(int val)
 void add_node(NodePtr &head, int val);
 //Postcondition: Added node to a LIFO data structure
 
-void print(NodePtr &head);
+void print(NodePtr head);
 //Postcondition: Prints the contents of a linked list
 
 void deallocate_list(NodePtr &head);
@@ -67,7 +67,7 @@ int main()
     return 0;
 }
 
-void print(NodePtr &head)
+void print(NodePtr head)
 {
     NodePtr tempPtr;
     for (tempPtr = head; tempPtr != nullptr; tempPtr = tempPtr->link)
@@ -90,7 +90,7 @@ void deallocate_list(NodePtr &head)
 {
     NodePtr tempPtr = head;
     NodePtr currentNode;
-    while (tempPtr->link != nullptr)
+    while (tempPtr != nullptr)
     {
         currentNode = tempPtr;
         tempPtr = tempPtr->link;
