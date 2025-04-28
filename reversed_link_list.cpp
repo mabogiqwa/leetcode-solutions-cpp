@@ -9,6 +9,15 @@ struct Node
 };
 typedef Node* NodePtr;
 
+Node* initialize_list(int val)
+{
+    NodePtr tempPtr = new Node;
+    tempPtr->value = val;
+    tempPtr->link = nullptr;
+
+    return tempPtr;
+}
+
 void add_node(NodePtr &head, int val);
 //Postcondition: Added node to a LIFO data structure
 
@@ -25,9 +34,11 @@ int main()
     NodePtr head;
 
     NodePtr first = new Node;
-    first->value = 3;
-    first->link = nullptr;
-    head = first;
+    //first->value = 3;
+    //first->link = nullptr;
+    //head = first;
+
+    first = initialize_list(3);
 
     add_node(first, 2);
     add_node(first, 5);
