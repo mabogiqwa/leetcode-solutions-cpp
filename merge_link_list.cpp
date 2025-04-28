@@ -1,6 +1,5 @@
 #include <iostream>
 
-int size = 1;
 struct Node
 {
     int value;
@@ -24,6 +23,8 @@ void print(NodePtr &head);
 
 void deallocate_list(NodePtr &head);
 
+Node* deep_copy(NodePtr &head);
+
 //Version 1
 Node* merge_lists(NodePtr h1, NodePtr h2);
 //Precondition: Pass the first pointer of the first list and the head of the second list
@@ -40,6 +41,11 @@ int main()
     add_node(first, 1);
     add_node(first, 10);
 
+    NodePtr newHead = deep_copy(head);
+
+    print(newHead);
+
+    /*
     NodePtr first2 = initialize_list(5);
     NodePtr head2 = first2;
 
@@ -48,13 +54,7 @@ int main()
     add_node(first2, 19);
     add_node(first2, 22);
     add_node(first2, 14);
-
-    NodePtr mergedHead = merge_lists(head, head2);
-
-    deallocate_list(head);
-    deallocate_list(head2);
-
-    print(mergedHead);
+    */
 
     return 0;
 }
@@ -76,7 +76,6 @@ void add_node(NodePtr &last, int val)
     last->link = tempPtr;
     last = tempPtr;
     tempPtr->link = nullptr;
-    size++;
 }
 
 void deallocate_list(NodePtr &head)
@@ -117,10 +116,21 @@ Node* merge_lists(NodePtr h1, NodePtr h2)
 
 Node* deep_copy(NodePtr &head)
 {
-    NodePtr tempPtr;
-    for (tempPtr = newHead; tempPtr != nullptr; tempPtr = tempPtr->link)
-    {
+    NodePtr tempPtr, last;
+    NodePtr newHead;
+    int index = 0;
 
+    tempPtr = head;
+    last = initialize_list(tempPtr->value); //initialize new linked list
+    newHead = last;
+
+    for (tempPtr = head; tempPtr != nullptr; tempPtr = tempPtr->link)
+    {
+        if (index > 0) {
+            add_node(last, tempPtr->value);
+        }
+        index++;
     }
 
+    return newHead;
 }
