@@ -60,21 +60,8 @@ void reverse_list(NodePtr head)
     int index = 0;
     int lastIndex = size - 1;
 
-    for (tempPtr = head; tempPtr != nullptr; tempPtr=tempPtr->link) { listArr[index] = tempPtr; index++;}
+    for (tempPtr = head; tempPtr != nullptr; tempPtr=tempPtr->link) { listArr[index] = tempPtr; index++;} //Stores the memory locations of each node in an array index position
 
-    /*
-    for(int index = lastIndex; index > 0; index--)
-    {
-        if (index == lastIndex)
-            newHead = listArr[index];
-
-        if (index == 1)
-            listArr[index-1]->link = nullptr;
-        else
-            listArr[index]->link = listArr[index-1]->link;
-    }
-    */
-    //std::cout << std::endl;
     std::reverse(listArr, listArr + size); //Array is reversed
 
     for(int i = 0; i < size; i++)
@@ -86,21 +73,8 @@ void reverse_list(NodePtr head)
         if (i == (size-1)) {
                 listArr[i]->link = nullptr;
         }
-    }
+    } //Uses a for loop to link all the memory locations to create a linked list from the reversed array
 
-    /*
-    std::cout << newHead->value << " ";
-    newHead = newHead->link;
-    std::cout << newHead->value << " ";
-    newHead = newHead->link;
-    std::cout << newHead->value << " ";
-    newHead = newHead->link;
-    std::cout << newHead->value << " ";
-    newHead = newHead->link;
-    std::cout << newHead->value << " ";
-    newHead = newHead->link;
-    std::cout << newHead->value << " ";
-    */
     std::cout << std::endl;
     print(newHead);
     deallocate_list(newHead);
