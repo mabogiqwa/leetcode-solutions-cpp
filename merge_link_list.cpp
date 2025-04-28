@@ -60,6 +60,10 @@ int main()
 
     print(mergedHead);
 
+    deallocate_list(head);
+    deallocate_list(head2);
+    deallocate_list(mergedHead);
+
     return 0;
 }
 
@@ -112,7 +116,7 @@ Node* merge_lists(NodePtr h1, NodePtr h2)
             lastNode = tempPtr; //captures last node of first linked list
     }
 
-    lastNode->link = h2; //merge linked lists
+    lastNode->link = head2; //merge linked lists
 
     return newHead;
 }
