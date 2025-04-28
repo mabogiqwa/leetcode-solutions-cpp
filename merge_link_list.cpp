@@ -20,10 +20,14 @@ void add_node(NodePtr &head, int val);
 //Postcondition: Added node to a LIFO data structure
 
 void print(NodePtr &head);
+//Postcondition: Prints the contents of a linked list
 
 void deallocate_list(NodePtr &head);
+//Postcondition: Deallocates memory used by linked list
 
 Node* deep_copy(NodePtr &head);
+//Postcondition: Creates a new linked list which has the same values
+//but separate memory allocation as the linked list which was passed as the function argument.
 
 //Version 1
 Node* merge_lists(NodePtr h1, NodePtr h2);
@@ -41,11 +45,6 @@ int main()
     add_node(first, 1);
     add_node(first, 10);
 
-    NodePtr newHead = deep_copy(head);
-
-    print(newHead);
-
-    /*
     NodePtr first2 = initialize_list(5);
     NodePtr head2 = first2;
 
@@ -54,7 +53,12 @@ int main()
     add_node(first2, 19);
     add_node(first2, 22);
     add_node(first2, 14);
-    */
+
+    NodePtr mergedHead;
+
+    mergedHead = merge_lists(head, head2);
+
+    print(mergedHead);
 
     return 0;
 }
@@ -93,20 +97,19 @@ void deallocate_list(NodePtr &head)
 
 Node* merge_lists(NodePtr h1, NodePtr h2)
 {
-    NodePtr newHead = h1;
-    NodePtr tempPtr, lastNode;
+    NodePtr head1, head2;
+    NodePtr tempPtr, newHead, lastNode;
 
-    //Deep copy
-    for (tempPtr = newHead; tempPtr != nullptr; tempPtr = tempPtr->link)
-    {
+    head1 = deep_copy(h1);
+    head2 = deep_copy(h2);
 
-    }
+    newHead = head1;
 
     //Iterate through the first linked list
     for (tempPtr = newHead; tempPtr != nullptr; tempPtr = tempPtr->link)
     {
         if (tempPtr->link == nullptr)
-            lastNode = tempPtr;
+            lastNode = tempPtr; //captures last node of first linked list
     }
 
     lastNode->link = h2; //merge linked lists
