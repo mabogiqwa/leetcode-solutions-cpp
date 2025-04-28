@@ -27,7 +27,7 @@ void deallocate_list(NodePtr &head);
 
 Node* deep_copy(NodePtr &head);
 //Postcondition: Creates a new linked list which has the same values
-//but separate memory allocation as the linked list which was passed as the function argument.
+//but separate memory allocation from the linked list which was passed as the function argument.
 
 //Version 1
 Node* merge_lists(NodePtr h1, NodePtr h2);
