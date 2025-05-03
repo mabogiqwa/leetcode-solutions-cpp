@@ -36,10 +36,22 @@ int main()
 
     //Constructing right subtree from the root node
     add_node_to_right(rootNode, 2);
+    rightParentNodes.push_back(rootNode);
     add_node_to_right(rootNode, 4);
+    rightParentNodes.push_back(rootNode);
     add_node_to_right(rootNode, 101);
+    rightParentNodes.push_back(rootNode);
 
-    print(rightParentNodes[0]);
+    NodePtr leftNode = rightParentNodes[1];
+    add_node_to_left(leftNode, 3);
+    leftNode = leftNode->lLink;
+    add_node_to_left(leftNode, -1);
+    add_node_to_right(leftNode, 10);
+
+    add_node_to_left(rightParentNodes[2], 55);
+    //Right subtree complete
+
+    //Constructing right subtree from the root node
 
     return 0;
 }
@@ -50,12 +62,10 @@ void add_node_to_right(NodePtr &parentNode, int val)
     tempPtr->value = val;
     parentNode->rLink = tempPtr;
     parentNode = tempPtr;
-    rightParentNodes.push_back(parentNode);
     tempPtr->rLink = nullptr;
     tempPtr->lLink = nullptr;
 }
 
-/*
 void add_node_to_left(NodePtr &parentNode, int val)
 {
     NodePtr tempPtr = new Node;
@@ -64,7 +74,6 @@ void add_node_to_left(NodePtr &parentNode, int val)
     tempPtr->rLink = nullptr;
     tempPtr->lLink = nullptr;
 }
-*/
 
 void print(NodePtr &rootNode)
 {
