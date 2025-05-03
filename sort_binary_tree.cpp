@@ -1,5 +1,6 @@
 //Sorts a unordered binary tree to a binary search tree (BST)
 #include <iostream>
+#include <vector>
 
 struct Node
 {
@@ -8,6 +9,9 @@ struct Node
     Node *lLink;
 };
 typedef Node* NodePtr;
+
+std::vector<NodePtr> rightParentNodes;
+//Index of rightParentNodes will represent a level of the binary tree
 
 void add_node_to_right(NodePtr &parentNode, int val);
 //Postcondition: Adds node to the right subtree
@@ -21,16 +25,21 @@ void print(NodePtr &rootNode);
 int main()
 {
     NodePtr rNode;
-    NodePtr rootNode = new Node;
+    NodePtr rootNode = new Node; //tracks the last added node
+
+    rightParentNodes.push_back(rootNode);
 
     rNode = rootNode;
-    rootNode->value = 5;
+    rootNode->value = 10;
     rootNode->rLink = nullptr;
     rootNode->lLink = nullptr;
 
-    add_node_to_right(rootNode, 13);
+    //Constructing right subtree from the root node
+    add_node_to_right(rootNode, 2);
+    add_node_to_right(rootNode, 4);
+    add_node_to_right(rootNode, 101);
 
-    print(rootNode);
+    print(rightParentNodes[0]);
 
     return 0;
 }
@@ -40,9 +49,22 @@ void add_node_to_right(NodePtr &parentNode, int val)
     NodePtr tempPtr = new Node;
     tempPtr->value = val;
     parentNode->rLink = tempPtr;
+    parentNode = tempPtr;
+    rightParentNodes.push_back(parentNode);
     tempPtr->rLink = nullptr;
     tempPtr->lLink = nullptr;
 }
+
+/*
+void add_node_to_left(NodePtr &parentNode, int val)
+{
+    NodePtr tempPtr = new Node;
+    tempPtr->value = val;
+    parentNode->lLink = tempPtr;
+    tempPtr->rLink = nullptr;
+    tempPtr->lLink = nullptr;
+}
+*/
 
 void print(NodePtr &rootNode)
 {
