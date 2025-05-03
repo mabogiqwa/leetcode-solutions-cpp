@@ -14,6 +14,9 @@ void add_node(NodePtr &head, int value);
 
 int main()
 {
+    NodePtr rootNode = new Node;
+    rootNode->rLink = nullptr;
+    rootNode->lLink = nullptr;
 
     return 0;
 }
