@@ -1,3 +1,4 @@
+//Going to add preconditions and postconditions
 #include <iostream>
 #include <cmath>
 
@@ -60,6 +61,7 @@ void deallocate(NodePtr &head)
     head = nullptr;
 }
 
+//This is the function that gives the output to the two lists
 Node* construct_list(long long num)
 {
     std::string numString = std::to_string(num);
