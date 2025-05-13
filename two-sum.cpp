@@ -7,7 +7,7 @@ int main()
 {
     std::vector<int> nums = {2,7,11,15};
     std::vector<int> sumIndices;
-    int target;
+    int target = 26;
 
     sumIndices = get_two_sum(nums, target);
 
@@ -28,14 +28,13 @@ std::vector<int> get_two_sum(std::vector<int> n, int target)
     for (int i = 0; i < n.size(); i++)
     {
         staticVal = n[i];
-        //std::cout << staticVal << std::endl;
-        for (int k = j; j < n.size(); j++)
+        for (int k = j; k < n.size(); k++)
         {
             sum = staticVal + n[j];
             if (sum == target)
             {
                 indices.push_back(i);
-                indices.push_back(j);
+                indices.push_back(k);
 
                 return indices;
             }
