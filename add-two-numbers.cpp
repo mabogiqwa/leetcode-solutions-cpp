@@ -117,6 +117,7 @@ int main()
 
     deallocate(head);
     deallocate(head2);
+    deallocate(head3);
 
     return 0;
 }
