@@ -33,14 +33,11 @@ std::vector<int> get_two_sum(std::vector<int> n, int target)
             sum = staticVal + n[j];
             if (sum == target)
             {
-                indices.push_back(i);
-                indices.push_back(k);
-
-                return indices;
+                return {i, j};
             }
         }
         j++;
     }
 
-    return indices;
+    return {};
 }
