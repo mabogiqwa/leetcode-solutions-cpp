@@ -1,11 +1,13 @@
+//Time complexity of O(log2n) - Improvement
 #include <iostream>
+#include <cmath>
 
 double myPow(double x, int n);
 
 int main()
 {
-    double x = 5;
-    long long n = -3;
+    double x = 1;
+    long long n = 10;
 
     std::cout << myPow(x, n);
 
@@ -14,27 +16,29 @@ int main()
 
 double myPow(double x, int n)
 {
-    double product, power = x;
-    long long n1 = n;
+    double result = 1;
+    int iteration = 1;
 
-    if (n1 == 0) { return 1; }
+    if (n == 0) { return 1; }
 
-    if (x == 1) { return 1; }
-
-    if (n1 < 0) {
+    if (n < 0) {
+        n = -n;
         x = 1/x;
-        power = x;
-        n1 = -n1;
     }
-
-    if (n )
-
-    for (long long j = 1; j < n1; j++)
+    while (n > 0)
     {
-        product = power*x;
-        power = product;
+        if (n % 2 == 0)
+        {
+            x = (x*x);
+            n = (n/2);
+        } else {
+            result = result * x;
+            x = (x*x);
+            n = floor(n/2);
+        }
+        iteration++;
     }
 
-    return power;
+    return result;
 }
 

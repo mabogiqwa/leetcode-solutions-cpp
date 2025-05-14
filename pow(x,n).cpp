@@ -1,4 +1,5 @@
 //Still too slow for large cases of n
+//Time complexity - O(n)
 #include <iostream>
 
 double myPow(double x, int n);
