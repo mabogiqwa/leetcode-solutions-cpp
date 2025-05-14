@@ -1,11 +1,12 @@
+//Still too slow for large cases of n
 #include <iostream>
 
 double myPow(double x, int n);
 
 int main()
 {
-    double x = 2;
-    long long n = -3;
+    double x = 1;
+    long long n = 8;
 
     std::cout << myPow(x, n);
 
@@ -14,29 +15,25 @@ int main()
 
 double myPow(double x, int n)
 {
-    double product, power = x, reciprocalPower;
+    double product, power = x;
 
     if (n == 0) { return 1; }
 
-    if (n > 0)
-    {
-        for (int j = 1; j < n; j++)
-        {
-            product = power*x;
-            power = product;
-        }
-        return power;
-    }
-    if (n < 0)
-    {
-        for (int j = 1; j < (-1*n); j++)
-        {
-            product = power*x;
-            reciprocalPower = (1.0/(product));
-            power = product;
-        }
-        return reciprocalPower;
+    if (x == 1) { return 1; }
+
+    if (n < 0) {
+        x = 1/x;
+        power = x;
+        n = (-1)*n;
     }
 
-    return 1;
+    if (n )
+
+    for (int j = 1; j < n; j++)
+    {
+        product = power*x;
+        power = product;
+    }
+
+    return power;
 }
