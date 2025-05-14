@@ -21,7 +21,6 @@ int main()
 
 std::vector<int> get_two_sum(std::vector<int> n, int target)
 {
-    std::vector<int> indices;
     int staticVal, sum, j;
 
     j = 1;
