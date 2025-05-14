@@ -1,3 +1,6 @@
+//My code logic assumes that a number is a palindrome
+//if symmetric characters in the number match until it
+//that isn't the case
 #include <iostream>
 
 bool isPalindrome(std::string input)
