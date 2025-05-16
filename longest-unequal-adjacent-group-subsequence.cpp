@@ -5,11 +5,12 @@ std::vector<std::string> getLongestSubsequence(std::vector<std::string> wrds, st
 {
     std::vector<std::string> longestSubsequence;
 
+    if(!wrds.empty()) { longestSubsequence.push_back(wrds[0]); }
+    else { return {}; }
+
     if (grps.size() > 1) {
         for (int i = 0; i < wrds.size()-1; i++)
         {
-                if (i == 0) { longestSubsequence.push_back(wrds[i]); }
-
                 if (grps[i] != grps[i+1])
                 {
                     if (i == 0) {
@@ -22,8 +23,6 @@ std::vector<std::string> getLongestSubsequence(std::vector<std::string> wrds, st
                     }
                 }
         }
-    } else if (grps.size() == 1) {
-        longestSubsequence.push_back(wrds[0]);
     }
 
     return longestSubsequence;
@@ -31,8 +30,8 @@ std::vector<std::string> getLongestSubsequence(std::vector<std::string> wrds, st
 
 int main()
 {
-    std::vector<std::string> words = {"a", "b", "c", "d", "e", "f", "g", "h"};
-    std::vector<int> groups = {1, 1, 1, 2, 1, 2, 1, 2};
+    std::vector<std::string> words = {"d","w","a","e"};
+    std::vector<int> groups = {0,1,1,1};
 
     std::vector<std::string> subSequence = getLongestSubsequence(words, groups);
 
