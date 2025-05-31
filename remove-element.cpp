@@ -26,7 +26,7 @@ int main()
 
     std::cout << removeElement(nums,2) << std::endl << std::endl;
 
-    for (int i = 0; i < nums.size(); i++)
+    for (int i = 0; i < nums.size(); ++i)
     {
         std::cout << nums[i] << " ";
     }
