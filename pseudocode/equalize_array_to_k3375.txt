@@ -1,9 +1,0 @@
-//Rough guideline of the logic and control flow
-
-1. Loop through the array until you find a value greater than k.
-
-2. The minute you find a value greater than k, check if each value in nums greater than k is equal to the first value greater than k.
-	2.1. If there exists a value not equal to the first value greater than k then k is not valid.
-             2.1.1. Save the index of every value equal to the first number greater than k
-
-        2.2. If all values greater than k are equal to the first value greater than k, then change all of their values to k.
