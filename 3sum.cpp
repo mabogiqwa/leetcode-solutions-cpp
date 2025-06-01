@@ -20,7 +20,7 @@ std::vector<std::vector<int>> threeSum(std::vector<int>& nums)
             {
                 twoSum += (nums[firstNumIndex] + nums[secondNumIndex]);
                 threeSum += (twoSum + nums[j]);
-                std::cout  << nums[firstNumIndex] << " " << nums[secondNumIndex] << " " << nums[j] << std::endl;
+                //std::cout  << nums[firstNumIndex] << " " << nums[secondNumIndex] << " " << nums[j] << std::endl;
 
                 if (threeSum == 0)
                 {
