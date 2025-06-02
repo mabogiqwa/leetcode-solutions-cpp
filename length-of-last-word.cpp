@@ -20,13 +20,7 @@ int lengthOfLastWord(std::string s)
         }
         index++;
     }
-    std::cout << sentence << std::endl;
     lastIndex = tokens.size() - 1;
-
-    for (auto& sen : tokens) {
-        std::cout << sen << " ";
-    }
-    std::cout << std::endl;
 
     return (tokens[lastIndex].length());
 }
