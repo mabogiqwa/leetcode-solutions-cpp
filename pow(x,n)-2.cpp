@@ -6,8 +6,8 @@ double myPow(double x, int n);
 
 int main()
 {
-    double x = 1;
-    long long n = 10;
+    double x = 2;
+    long long n = 11;
 
     std::cout << myPow(x, n);
 
