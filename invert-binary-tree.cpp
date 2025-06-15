@@ -10,7 +10,7 @@ struct TreeNode
 };
 typedef TreeNode* NodePtr;
 
-TreeNode* invertTree(NodePtr root)
+NodePtr invertTree(NodePtr root)
 {
     if (!root)
         return nullptr;
@@ -45,6 +45,12 @@ int main()
     root->left->right = new TreeNode(3);
     root->right->left = new TreeNode(6);
     root->right->right = new TreeNode(9);
+
+    NodePtr invertedRoot;
+
+    invertedRoot = invertTree(root);
+
+    deleteTree(root);
 
     return 0;
 }
