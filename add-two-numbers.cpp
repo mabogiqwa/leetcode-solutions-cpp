@@ -6,118 +6,64 @@ struct Node
 {
     int value;
     Node *link;
+
+    Node (int val) : value(val), link(nullptr) {}
 };
 typedef Node* NodePtr;
 
-Node* initialize_list(int val)
+class LinkedList
 {
-    NodePtr tempPtr = new Node;
-    tempPtr->value = val;
-    tempPtr->link = nullptr;
+public:
+    NodePtr head;
 
-    return tempPtr;
-}
-
-void add_node(NodePtr &currentNode, int val)
-{
-    NodePtr tempPtr = new Node;
-    tempPtr->value = val;
-    currentNode->link = tempPtr;
-    currentNode = tempPtr;
-    tempPtr->link = nullptr;
-}
-
-int size(NodePtr head)
-{
-    NodePtr iter;
-    int size = 0;
-    for (iter = head; iter != nullptr; iter = iter->link)
-    {
-        size++;
+    LinkedList(int val) {
+        head = new Node(val);
     }
 
-    return size;
-}
-
-void print(NodePtr head)
-{
-    NodePtr iter;
-    for (iter = head; iter != nullptr; iter = iter->link)
-    {
-        std::cout << iter->value << " ";
-    }
-}
-
-void deallocate(NodePtr &head)
-{
-    NodePtr tempPtr = head;
-    NodePtr currentNode;
-    while (tempPtr->link != nullptr)
-    {
-        currentNode = tempPtr;
-        tempPtr = tempPtr->link;
-        delete currentNode;
-    }
-    head = nullptr;
-}
-
-//This is the function that gives the output to the two lists
-Node* construct_list(long long num)
-{
-    std::string numString = std::to_string(num);
-    int size = numString.size();
-
-    int lastNumber = std::stoi(std::string(1, numString[size-1]));
-    NodePtr currentPtr = initialize_list(lastNumber);
-    NodePtr head = currentPtr;
-
-    for (int i = numString.size() - 2; i >= 0; i--)
-    {
-        int currentNumber = std::stoi(std::string(1, numString[i]));
-        add_node(currentPtr, currentNumber);
+    void add_node(int val) {
+        NodePtr newNode = new Node(val);
+        if (!head) {
+            head = newNode;
+            return;
+        }
+        NodePtr tempPtr = head;
+        while (tempPtr->link) {
+            tempPtr = tempPtr->link;
+        }
+        tempPtr->link = newNode;
     }
 
-    return head;
-}
-
-long long convert_to_digit(NodePtr head)
-{
-    NodePtr iter;
-    int iteration = 0;
-    long long digit = 0;
-
-    for (iter = head; iter != nullptr; iter = iter->link)
-    {
-        digit += (iter->value * (pow(10, iteration)));
-        iteration++;
+    void print() {
+        NodePtr tempPtr = head;
+        while (tempPtr) {
+            std::cout << tempPtr->value << " ";
+            tempPtr = tempPtr->link;
+        }
     }
 
-    return digit;
-}
+    void deallocate() {
+        NodePtr tempPtr = head;
+        while (head) {
+            head = head->link;
+            delete tempPtr;
+            tempPtr = head;
+        }
+        head = nullptr;
+    }
+};
 
 int main()
 {
-    NodePtr currentNode = initialize_list(2); //first list
-    NodePtr head = currentNode;
+    LinkedList l1(2);
+    l1.add_node(4);
+    l1.add_node(3);
 
-    add_node(currentNode, 4);
-    add_node(currentNode, 3);
+    LinkedList l2(5);
+    l2.add_node(6);
+    l2.add_node(4);
 
-    NodePtr currentNode2 = initialize_list(5);
-    NodePtr head2 = currentNode2;
-
-    add_node(currentNode2, 6);
-    add_node(currentNode2, 4);
-
-    long long total = convert_to_digit(head) + convert_to_digit(head2);
-
-    NodePtr head3 = construct_list(total);
-
-    print(head3);
-
-    deallocate(head);
-    deallocate(head2);
-    deallocate(head3);
+    l1.deallocate();
+    l2.deallocate();
 
     return 0;
 }
