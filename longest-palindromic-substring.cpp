@@ -46,6 +46,13 @@ std::vector<std::string> generateUniqueSubstrings(const std::string& s) {
         k++;
     }
 
+    /*
+    for (int i = 0; i < listOfStrings.size();i++)
+    {
+        std::cout << listOfStrings[i] << " ";
+    }
+    */
+
     // Remove duplicates while preserving order
     std::unordered_set<std::string> seen;
     std::vector<std::string> unique;
@@ -55,36 +62,48 @@ std::vector<std::string> generateUniqueSubstrings(const std::string& s) {
         }
     }
 
+    /*
+    for (int i = 0; i < unique.size();i++)
+    {
+        std::cout << unique[i] << " ";
+    }
+    */
+
     for (int j = 0; j < unique.size(); j++)
     {
         if(isPalindrome(unique[j]))
             listOfPalindromes.push_back(unique[j]);
     }
 
+    /*
+    for (int i = 0; i < listOfPalindromes.size();i++)
+    {
+        std::cout << listOfPalindromes[i] << " ";
+    }
+    */
+
     return listOfPalindromes;
 }
 
-std::string determineLongestPalindrome(std::vector<std::string> s)
-{
-    std::string longestPalindrome;
-
-    for (int i = 0; i < s.size()-1; i++)
-    {
-        if (s[i].length() > s[i+1].length())
-            longestPalindrome = s[i];
-        else
-            longestPalindrome = s[i+1];
+std::string longestPalindromeFromList(const std::vector<std::string>& list) {
+    std::string longest = "";
+    for (const auto& str : list) {
+        if (isPalindrome(str) && str.size() > longest.size()) {
+            longest = str;
+        }
     }
-
-    return longestPalindrome;
+    return longest;
 }
 
 int main()
 {
-    std::string s = "cbbd";
-    std::vector<std::string> substrings = generateUniqueSubstrings(s);
+    std::vector<std::string> testCases = {"babad","cbbd","a","ac","racecar","anana","forgeerksskeegfor","abddcbax","abacdfgdcaba","abcba"};
 
-    std::cout << determineLongestPalindrome(substrings);
+    for (const auto& test : testCases) {
+        std::vector<std::string> list = generateUniqueSubstrings(test);
+        std::string result = longestPalindromeFromList(list);
+        std::cout << "Input: " << test << " -> Longest Palindromic Substring: " << result << std::endl;
+    }
 
     return 0;
 }
