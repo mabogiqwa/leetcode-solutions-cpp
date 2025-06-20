@@ -1,4 +1,4 @@
-//Going to add preconditions and postconditions
+//Suboptimal - Encounters problems with large numbers
 #include <iostream>
 #include <cmath>
 
@@ -91,9 +91,23 @@ Node* construct_list(long long num)
 LinkedList addTwoNumbers(LinkedList l1, LinkedList l2)
 {
     LinkedList l3;
-    long long total = convertToDigit(l1) + convertToDigit(l2);
+    NodePtr p1 = l1.head;
+    NodePtr p2 = l2.head;
+    int carry = 0;
 
-    l3.head = construct_list(total);
+    while (p1 || p2 || carry) {
+        int sum = carry;
+        if (p1) {
+            sum += p1->value;
+            p1 = p1->link;
+        }
+        if (p2) {
+            sum += p2->value;
+            p2 = p2->link;
+        }
+        l3.add_node(sum % 10);
+        carry = sum / 10;
+    }
 
     return l3;
 }
