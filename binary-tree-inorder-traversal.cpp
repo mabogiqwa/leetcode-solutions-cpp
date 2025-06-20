@@ -37,5 +37,7 @@ int main()
 
     inorderTraversal(root);
 
+    deleteTree(root);
+
     return 0;
 }
