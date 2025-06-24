@@ -3,40 +3,30 @@
 
 int strStr(std::string haystack, std::string needle)
 {
-    std::string emptyString = "";
-    bool needleExists = false;
-    int iter = 0;
+    if (needle.empty()) return 0;  // Edge case
 
-    for (int i = 0; i < haystack.length(); i++) {
-        if (haystack[i] == needle[iter]) {
-            emptyString += haystack[i];
-            if (emptyString == needle) {
-                needleExists = true;
-                break;
-            }
-            iter++;
-        } else {
-            emptyString = "";
-            iter = 0;
+    int hLen = haystack.length();
+    int nLen = needle.length();
+
+    for (int i = 0; i <= hLen - nLen; i++) {
+        int j = 0;
+        while (j < nLen && haystack[i + j] == needle[j]) {
+            j++;
         }
-    }
-    if(needleExists) {
-        for (int j = 0; j < haystack.length(); j++) {
-            if (haystack[j] == needle[0]) {
-                return j;
-            }
+        if (j == nLen) {
+            return i;  // Found match at index i
         }
     }
 
-    return -1;
+    return -1;  // Not found
 }
 
 int main()
 {
-    std::string input = "happybutsad";
-    std::string id = "sad";
+    std::string input = "mississippi";
+    std::string id = "issip";
 
-    std::cout << strStr(input, id);
+    std::cout << strStr(input, id) << std::endl;
 
     return 0;
 }
