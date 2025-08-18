@@ -38,7 +38,6 @@ bool isValid(std::string input)
     }
 
     if (evenParentheses && evenCurlyBraces && evenSquareBrackets) {
-        std::cout << "I am the one that executes" << std::endl;
         return true;
     } else {
         return false;
