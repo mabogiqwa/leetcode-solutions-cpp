@@ -6,7 +6,7 @@ bool isValid(std::string input);
 
 int main()
 {
-    std::cout << isValid("()()");
+    std::cout << isValid("([])");
     return 0;
 }
 
@@ -29,7 +29,10 @@ bool isValid(std::string input)
             if (index >= input.length())
                 break;
         } else if (input[index] == ')') {
-            evenParentheses = false;
+            if (!evenParentheses)
+                evenParentheses = true;
+            else
+                evenParentheses = false;
         }
 
         if (input[index] == '[') {
@@ -42,7 +45,10 @@ bool isValid(std::string input)
             if (index >= input.length())
                 break;
         } else if (input[index] == ']') {
-            evenSquareBrackets = false;
+            if (!evenSquareBrackets)
+                evenSquareBrackets = true;
+            else
+                evenSquareBrackets = false;
         }
 
         if (input[index] == '{') {
@@ -55,7 +61,10 @@ bool isValid(std::string input)
             if (index >= input.length())
                 break;
         } else if (input[index] == '}') {
-            evenCurlyBraces = false;
+            if (!evenCurlyBraces)
+                evenCurlyBraces = true;
+            else
+                evenCurlyBraces = false;
         }
 
         index++;
