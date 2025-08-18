@@ -1,3 +1,5 @@
+//Passes 80/100 test cases
+//Doesn't pass the test case {[]}
 #include <iostream>
 #include <iostream>
 #include <string>
@@ -6,7 +8,7 @@ bool isValid(std::string input);
 
 int main()
 {
-    std::cout << isValid("([])");
+    std::cout << isValid("{[]}");
     return 0;
 }
 
@@ -66,7 +68,6 @@ bool isValid(std::string input)
             else
                 evenCurlyBraces = false;
         }
-
         index++;
     }
 
