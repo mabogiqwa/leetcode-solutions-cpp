@@ -5,28 +5,40 @@
 std::string longestCommonPrefix(std::vector<std::string> strs)
 {
     std::string longestCPrfx = "";
-    int index = 0;
+    std::string firstWord = "";
+    int iterations = 0;
+    int length;
+    std::string nextString;
+    bool longestPrefixExists = false;
 
-    while (index < lengthOfLongest)
+    firstWord = strs[0];
+    length = strs[0].length();
+    while (index < strs.size())
     {
+        nextString = strs[iterations+1].length();
+        //compares the first and second words and captures the longest prefix
+        if (index == 0) {
+            for (int i = 0; i < strs[iterations+1].length(); i++) {
+                if (firstWord[0] != nextString[0]) {
+                    return "";
+                }
+                if (firstWord[i] == nextString[i]) {
+                    longestPrefixExists = true;
+                    longestCPrfx += (firstWord[i]);
+                }
+            }
+        } else {
+            if (!longestPrefixExists) {
+                return "";
+            }
+            for (int i = 0; i < longestCPrfx.length(); i++) {
+                if (longestCPrfx[i] == strs[iterations][i]) {
 
-        index++;
+                }
+            }
+        }
+        iterations++;
     }
-}
-
-int determineLongestString(std::vector<std::string> strs)
-{
-    int lengthOfLongest;
-
-    for (int i = 0; i < strs.size()-1; i++)
-    {
-        if (strs[i].length() > strs[i+1].length())
-            lengthOfLongest = strs[i].length();
-        else
-            lengthOfLongest = strs[i+1].length();
-    }
-
-    return lengthOfLongest;
 }
 
 int main()
