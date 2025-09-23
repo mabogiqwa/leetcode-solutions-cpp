@@ -9,7 +9,7 @@ std::string longestCommonPrefix(std::vector<std::string> strs)
     std::string longestCPrfx2 = ""; //stores the shorter prefix option
     std::string firstWord = "", nextString;
     int iterations = 0;
-    int length, lengthOfPrefix = 0;
+    int length;
     int nextStringLength;
     bool longestPrefixExists = false;
 
@@ -17,7 +17,6 @@ std::string longestCommonPrefix(std::vector<std::string> strs)
     length = strs[0].length();
     nextStringLength = strs[iterations+1].length();
     nextString = strs[iterations+1];
-    std::cout << nextString << std::endl;
 
     while (iterations < strs.size())
     {
@@ -32,7 +31,6 @@ std::string longestCommonPrefix(std::vector<std::string> strs)
                     longestCPrfx += (firstWord[i]);
                 }
             }
-            //std::cout << longestCPrfx << std::endl;
         }
         else {
             if (!longestPrefixExists) {
@@ -40,31 +38,23 @@ std::string longestCommonPrefix(std::vector<std::string> strs)
             }
             //This for loop evaluates whether the string after the second
             //string contain the prefix substring
-            nextString = strs[iterations+1];
-            std::cout << nextString << std::endl;
+            if ((iterations + 1) < (strs.size())) { //ensures that we do not access unassigned index value
+                nextString = strs[iterations+1];
+            }
+
+            //std::cout << nextString << std::endl;
             for (int i = 0; i < longestCPrfx.length(); i++) {
                 if (longestCPrfx[i] == nextString[i]) {
                     longestCPrfx2 += longestCPrfx[i];
                 }
             }
-            std::cout << longestCPrfx2 << std::endl;
             longestCPrfx = longestCPrfx2;
-            if (lengthOfPrefix != longestCPrfx.length()) {
-                return "";
-                longestPrefixExists = false;
-            }
+            std::cout << longestCPrfx << std::endl;
         }
         iterations++;
     }
 
-    /*
-    if (longestPrefixExists) {
-        return longestCPrfx;
-    } else {
-        return "";
-    }
-    */
-    return "";
+    return longestCPrfx;
 }
 
 int main()
