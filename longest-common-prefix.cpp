@@ -6,6 +6,7 @@
 std::string longestCommonPrefix(std::vector<std::string> strs)
 {
     std::string longestCPrfx = "";
+    std::string longestCPrfx2 = ""; //stores the shorter prefix option
     std::string firstWord = "", nextString;
     int iterations = 0;
     int length, lengthOfPrefix = 0;
@@ -31,26 +32,28 @@ std::string longestCommonPrefix(std::vector<std::string> strs)
                     longestCPrfx += (firstWord[i]);
                 }
             }
-            std::cout << longestCPrfx << std::endl;
+            //std::cout << longestCPrfx << std::endl;
         }
-        /*
         else {
             if (!longestPrefixExists) {
                 return "";
             }
             //This for loop evaluates whether the string after the second
             //string contain the prefix substring
+            nextString = strs[iterations+1];
+            std::cout << nextString << std::endl;
             for (int i = 0; i < longestCPrfx.length(); i++) {
-                if (longestCPrfx[i] == strs[iterations][i]) {
-                    lengthOfPrefix++;
+                if (longestCPrfx[i] == nextString[i]) {
+                    longestCPrfx2 += longestCPrfx[i];
                 }
             }
+            std::cout << longestCPrfx2 << std::endl;
+            longestCPrfx = longestCPrfx2;
             if (lengthOfPrefix != longestCPrfx.length()) {
                 return "";
                 longestPrefixExists = false;
             }
         }
-        */
         iterations++;
     }
 
