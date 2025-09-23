@@ -42,15 +42,15 @@ std::string longestCommonPrefix(std::vector<std::string> strs)
                 nextString = strs[iterations+1];
             }
 
-            //std::cout << nextString << std::endl;
             for (int i = 0; i < longestCPrfx.length(); i++) {
                 if (longestCPrfx[i] == nextString[i]) {
                     longestCPrfx2 += longestCPrfx[i];
                 }
             }
             longestCPrfx = longestCPrfx2;
-            std::cout << longestCPrfx << std::endl;
+            //std::cout << longestCPrfx << std::endl;
         }
+        longestCPrfx2 = "";
         iterations++;
     }
 
@@ -61,7 +61,7 @@ int main()
 {
     std::vector<std::string> strs = {"flower","flow","flight"};
 
-    longestCommonPrefix(strs);
+    std::cout << longestCommonPrefix(strs);
 
     return 0;
 }
