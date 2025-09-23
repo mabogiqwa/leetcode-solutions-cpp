@@ -22,8 +22,8 @@ std::string longestCommonPrefix(std::vector<std::string> strs)
     {
         //compares the first and second words and captures the longest prefix
         if (iterations == 0) {
-            for (int i = 0; i < nextStringLength; i++) { //also fix this
-                if (firstWord[0] != nextString[0]) { //checks if the first character match or not
+            for (int i = 0; i < nextStringLength; i++) {
+                if (firstWord[0] != nextString[0]) { //checks if the first character from first and second words match or not
                     return "";
                 }
                 if (firstWord[i] == nextString[i]) {
@@ -48,7 +48,6 @@ std::string longestCommonPrefix(std::vector<std::string> strs)
                 }
             }
             longestCPrfx = longestCPrfx2;
-            //std::cout << longestCPrfx << std::endl;
         }
         longestCPrfx2 = "";
         iterations++;
@@ -59,7 +58,7 @@ std::string longestCommonPrefix(std::vector<std::string> strs)
 
 int main()
 {
-    std::vector<std::string> strs = {"flower","flow","flight"};
+    std::vector<std::string> strs = {"interspecies", "interstellar", "interstate"};
 
     std::cout << longestCommonPrefix(strs);
 
