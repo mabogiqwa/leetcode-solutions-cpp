@@ -4,20 +4,27 @@
 
 int minimumTotal(std::vector<std::vector<int>>& triangle)
 {
-    int min = std::numeric_limits<int>::infinity();
+    double min = std::numeric_limits<double>::infinity();
+    int totalMin = 0;
 
     for (int i = 0; i < triangle.size(); i++) {
         for (int j = 0; j < triangle[i].size(); j++) {
-
+            if (triangle[i][j] < min) {
+                min = triangle[i][j];
+            }
         }
+        totalMin += min;
+        min = std::numeric_limits<double>::infinity();
     }
+
+    return totalMin;
 }
 
 int main()
 {
-    std::vector<std::vector<int>> triangle = {{2},{3,4},{6,5,7},{4,1,8,3}};
+    std::vector<std::vector<int>> triangle = {{-10}};
 
-    std::cout << triangle.size();
+    std::cout << minimumTotal(triangle);
 
     return 0;
 }
