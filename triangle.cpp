@@ -2,6 +2,7 @@
 #include <vector>
 #include <limits>
 
+//Does not choose next min based on adjacent element in the next row
 int minimumTotal(std::vector<std::vector<int>>& triangle)
 {
     double min = std::numeric_limits<double>::infinity();
