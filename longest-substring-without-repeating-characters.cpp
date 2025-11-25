@@ -9,7 +9,7 @@ void lengthOfLongestSubstring(std::string s) {
            stringWithoutRep += s[i];
        }
    }
-   std::cout << stringWithoutRep;
+
 }
 
 int main()
