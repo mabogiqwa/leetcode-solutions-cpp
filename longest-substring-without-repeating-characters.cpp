@@ -24,16 +24,20 @@ int lengthOfLongestSubstring(std::string s) {
        if (s[i] != s[i+1]) {
            stringWithoutRep += s[i];
        }
+       if (s[i] == s[i+1] && s[i+1] != s.length()) {
+            //std::cout << "Did you execute?" << std::endl;
+            stringWithoutRep = "";
+        }
    }
    s = removeDuplicates(stringWithoutRep);
-   //std::cout << s << std::endl;
+   std::cout << s << std::endl;
 
    return s.length();
 }
 
 int main()
 {
-    std::string s = "abcabcbb";
+    std::string s = "pwwkew";
 
     std::cout << lengthOfLongestSubstring(s);
 
