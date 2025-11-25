@@ -1,3 +1,4 @@
+//Suboptimal: Processes subsequences
 #include <iostream>
 #include <vector>
 #include <string>
@@ -24,7 +25,8 @@ int lengthOfLongestSubstring(std::string s) {
            stringWithoutRep += s[i];
        }
    }
-   s = removeDuplicates(s);
+   s = removeDuplicates(stringWithoutRep);
+   //std::cout << s << std::endl;
 
    return s.length();
 }
