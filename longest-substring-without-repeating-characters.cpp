@@ -1,7 +1,22 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <unordered_set>
 
-void lengthOfLongestSubstring(std::string s) {
+std::string removeDuplicates(const std::string& s)
+{
+    std::unordered_set<char> seen;
+    std::string result;
+    for (char c : s) {
+        if (!seen.count(c)) {
+            seen.insert(c);
+            result += c;
+        }
+    }
+    return result;
+}
+
+int lengthOfLongestSubstring(std::string s) {
 
    std::string stringWithoutRep = "";
    for (int i = 0; i < s.size()-1; i++) {
@@ -9,14 +24,16 @@ void lengthOfLongestSubstring(std::string s) {
            stringWithoutRep += s[i];
        }
    }
+   s = removeDuplicates(s);
 
+   return s.length();
 }
 
 int main()
 {
     std::string s = "abcabcbb";
 
-    lengthOfLongestSubstring(s);
+    std::cout << lengthOfLongestSubstring(s);
 
     return 0;
 }
