@@ -29,7 +29,7 @@ int lengthOfLongestSubstring(std::string s) {
    if (removeDuplicates(s).length() == 1) {
        return removeDuplicates(s).length();
    } else {
-       for (int i = 0; i < s.size()-1; i++) {
+       for (int i = 0; i < s.size(); i++) {
            if (s[i] != s[i+1]) {
                stringWithoutRep += s[i];
            } else {
@@ -41,7 +41,8 @@ int lengthOfLongestSubstring(std::string s) {
            }
         }
    }
-   //std::cout << s << std::endl;
+
+   //std::cout << stringWithoutRep << std::endl;
 
    s = removeDuplicates(stringWithoutRep);
 
@@ -50,7 +51,7 @@ int lengthOfLongestSubstring(std::string s) {
 
 int main()
 {
-    std::string s = "pwwkew";
+    std::string s = "abcabcbb";
 
     std::cout << lengthOfLongestSubstring(s);
 
