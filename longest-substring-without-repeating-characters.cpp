@@ -42,8 +42,6 @@ int lengthOfLongestSubstring(std::string s) {
         }
    }
 
-   //std::cout << stringWithoutRep << std::endl;
-
    s = removeDuplicates(stringWithoutRep);
 
    return s.length();
@@ -51,8 +49,44 @@ int lengthOfLongestSubstring(std::string s) {
 
 int main()
 {
-    std::string s = "abcabcbb";
+    //Empty string
+    std::string s = "";
+    std::cout << lengthOfLongestSubstring(s) << std::endl;
 
+    //Single character
+    s = "a";
+    std::cout << lengthOfLongestSubstring(s) << std::endl;
+
+    //All unique
+    s = "abcdef";
+    std::cout << lengthOfLongestSubstring(s) << std::endl;
+
+    //All repeating
+    s = "aaaaaa";
+    std::cout << lengthOfLongestSubstring(s) << std::endl;
+
+    //Simple mixed
+    s = "abcabcbb";
+    std::cout << lengthOfLongestSubstring(s) << std::endl;
+
+    //Overlap repetition
+    s = "pwwkew";
+    std::cout << lengthOfLongestSubstring(s) << std::endl;
+
+    //Repetition at end
+    s = "dvdf";
+    std::cout << lengthOfLongestSubstring(s) << std::endl;
+
+    //Non-contiguous repeats
+    s = "abba";
+    std::cout << lengthOfLongestSubstring(s) << std::endl;
+
+    //Mixed characters
+    s = "aA1!aA1!";
+    std::cout << lengthOfLongestSubstring(s) << std::endl;
+
+    //Spaces included
+    s = "a b c a b";
     std::cout << lengthOfLongestSubstring(s);
 
     return 0;
