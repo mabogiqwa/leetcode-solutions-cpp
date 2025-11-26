@@ -20,6 +20,11 @@ std::string removeDuplicates(const std::string s)
 int lengthOfLongestSubstring(std::string s) {
 
    std::string stringWithoutRep = "";
+   bool containsDuplicate = false;
+
+   if (s.empty()) {
+      return 0;
+   }
 
    if (removeDuplicates(s).length() == 1) {
        return removeDuplicates(s).length();
@@ -36,9 +41,9 @@ int lengthOfLongestSubstring(std::string s) {
            }
         }
    }
+   //std::cout << s << std::endl;
 
    s = removeDuplicates(stringWithoutRep);
-   //std::cout << s << std::endl;
 
    return s.length();
 }
