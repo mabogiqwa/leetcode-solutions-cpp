@@ -4,7 +4,7 @@
 #include <string>
 #include <unordered_set>
 
-std::string removeDuplicates(const std::string& s)
+std::string removeDuplicates(const std::string s)
 {
     std::unordered_set<char> seen;
     std::string result;
@@ -20,17 +20,25 @@ std::string removeDuplicates(const std::string& s)
 int lengthOfLongestSubstring(std::string s) {
 
    std::string stringWithoutRep = "";
-   for (int i = 0; i < s.size()-1; i++) {
-       if (s[i] != s[i+1]) {
-           stringWithoutRep += s[i];
-       }
-       if (s[i] == s[i+1] && s[i+1] != s.length()) {
-            //std::cout << "Did you execute?" << std::endl;
-            stringWithoutRep = "";
+
+   if (removeDuplicates(s).length() == 1) {
+       return removeDuplicates(s).length();
+   } else {
+       for (int i = 0; i < s.size()-1; i++) {
+           if (s[i] != s[i+1]) {
+               stringWithoutRep += s[i];
+           } else {
+               if ((i+1) != (s.length()-1)) {
+                  if ((i+2) != (s.length()-1)) {
+                      stringWithoutRep = "";
+                  }
+               }
+           }
         }
    }
+
    s = removeDuplicates(stringWithoutRep);
-   std::cout << s << std::endl;
+   //std::cout << s << std::endl;
 
    return s.length();
 }
