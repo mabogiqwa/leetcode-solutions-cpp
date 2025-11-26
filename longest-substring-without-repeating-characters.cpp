@@ -1,4 +1,4 @@
-//Suboptimal: Processes subsequences
+//Didn't try all test cases
 #include <iostream>
 #include <vector>
 #include <string>
@@ -49,6 +49,7 @@ int lengthOfLongestSubstring(std::string s) {
 
 int main()
 {
+    /*
     //Empty string
     std::string s = "";
     std::cout << lengthOfLongestSubstring(s) << std::endl;
@@ -88,6 +89,9 @@ int main()
     //Spaces included
     s = "a b c a b";
     std::cout << lengthOfLongestSubstring(s);
+    */
+    std::string s = "bbtablud";
+    std::cout << lengthOfLongestSubstring(s) << std::endl;
 
     return 0;
 }
