@@ -1,4 +1,4 @@
-//Tested on one case
+//Doesn't work on various cases
 #include <iostream>
 #include <vector>
 #include <limits>
@@ -38,7 +38,10 @@ int returnIndex(std::vector<int>& h, int val) {
 }
 
 void print(std::vector<int>& h) {
-
+    for (int i = 0; i < h.size(); i++) {
+        std::cout << h[i] << " ";
+    }
+    std::cout << std::endl;
 }
 
 int maxArea(std::vector<int>& height)
@@ -57,10 +60,20 @@ int maxArea(std::vector<int>& height)
         cpy.erase(std::remove(cpy.begin(), cpy.end(), largest), cpy.end());
     }
 
-    width = abs(returnIndex(height,largestVals[0])-(height.size()-1));
-
+    //print(largestVals);
+    if (height[height.size()-1] == 1) {
+        width = abs(returnIndex(height,largestVals[0])-(height.size()-2));
+        area = width * height[height.size()-2];
+        return area;
+    } else if (height[0] == 1) {
+        width = abs(returnIndex(height,largestVals[0])- 1);
+        area = width * height[1];
+        return area;
+    } else {
+        width = abs(returnIndex(height,largestVals[0])-(height.size()-1));
+    }
     if (largestVals[0] > largestVals[1]) {
-        if (height.size() == 3) {
+        if (height.size() == 3) { //For cases in which there are 3 elements
             width = abs(returnIndex(height,largestVals[1])-(height.size()-1));
         }
         area = width * height[height.size()-1];
@@ -73,9 +86,38 @@ int maxArea(std::vector<int>& height)
 
 int main()
 {
-    std::vector<int> h = {5,4,3,2,1};
+    std::vector<int> h = {1,2,3,4,5};
+    std::cout << "Output: " << maxArea(h) << std::endl;
 
-    std::cout << maxArea(h);
+    h = {1,1};
+    std::cout << "Output: " << maxArea(h) << std::endl;
+
+    h = {3,3};
+    std::cout << "Output: " << maxArea(h) << std::endl;
+
+    h = {1,3,2};
+    std::cout << "Output: " << maxArea(h) << std::endl;
+
+    h = {1,8,6,2,5,4,8,3,7};
+    std::cout << "Output: " << maxArea(h) << std::endl;
+
+    h = {1,2,3,4,5};
+    std::cout << "Output: " << maxArea(h) << std::endl;
+
+    h = {5,4,3,2,1};
+    std::cout << "Output: " << maxArea(h) << std::endl;
+
+    h = {2,100,2};
+    std::cout << "Output: " << maxArea(h) << std::endl;
+
+    h = {2,1,1,1,2};
+    std::cout << "Output: " << maxArea(h) << std::endl;
+
+    h = {7,1,7,1,7};
+    std::cout << "Output: " << maxArea(h) << std::endl;
+
+    h = {4,3,2,1,4};
+    std::cout << "Output: " << maxArea(h) << std::endl;
 
     return 0;
 }
