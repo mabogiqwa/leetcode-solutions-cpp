@@ -1,3 +1,4 @@
+//Tested on one case
 #include <iostream>
 #include <vector>
 #include <limits>
@@ -42,6 +43,10 @@ int maxArea(std::vector<int>& height)
     std::vector<int> cpy = height;
     int largest, width, area;
 
+    if (height.size() == 2) {
+        return height[0];
+    }
+
     for (int i = 0; i < 2; i++) {
         largest = findLargest(cpy);
         largestVals.push_back(largest);
@@ -57,7 +62,7 @@ int maxArea(std::vector<int>& height)
 
 int main()
 {
-    std::vector<int> h = {1,8,6,2,5,4,8,3,7};
+    std::vector<int> h = {1,1};
 
     std::cout << maxArea(h);
 
