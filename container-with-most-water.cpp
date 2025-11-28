@@ -57,18 +57,20 @@ int maxArea(std::vector<int>& height)
         cpy.erase(std::remove(cpy.begin(), cpy.end(), largest), cpy.end());
     }
 
-    //std::cout << (height.size()-1) << std::endl;
     width = abs(returnIndex(height,largestVals[0])-(height.size()-1));
-    //std::cout << width << std::endl;
-    //std::cout << findLowest(largestVals) << std::endl;
-    area = width * findLowest(largestVals);
+    std::cout << width << std::endl;
+    if (largestVals[0] > largestVals[1]) {
+        area = width * height[height.size()-1];
+    } else {
+        area = width * largestVals[0];
+    }
 
     return area;
 }
 
 int main()
 {
-    std::vector<int> h = {1,8,6,2,5,4,8,3,7};
+    std::vector<int> h = {2,100,2};
 
     std::cout << maxArea(h);
 
