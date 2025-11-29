@@ -22,6 +22,9 @@ std::vector<std::string> letterCombinations(std::string digits)
         if (digits == "8") { return numbers[6]; }
         if (digits == "9") { return numbers[7]; }
     }
+    if (digits.length() == 2) {
+        //There are 56 possible combinations
+    }
 
     return {{}};
 }
@@ -44,8 +47,4 @@ int main()
 
     return 0;
 }
-//There could be 1 up till 4 digits
-//Case 1: 1
-//Case 2: 12
-//Case 3: 123
-//Case 4: 1234
+
