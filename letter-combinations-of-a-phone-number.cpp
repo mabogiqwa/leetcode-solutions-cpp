@@ -12,6 +12,27 @@ void print(std::vector<std::vector<std::string>>& v) {
     }
 }
 
+std::vector<std::string> distribute(std::vector<std::vector<std::string>> v)
+{
+    std::vector<std::string> output;
+    std::string s = "";
+
+    if (v.size() == 2) {
+        std::vector<std::string> firstRow = v[0];
+        std::vector<std::string> secondRow = v[1];
+
+        for (int i = 0; i < firstRow.size(); i++) {
+            for (int j = 0; j < secondRow.size(); j++) {
+                s += firstRow[i] + secondRow[j];
+                output.push_back(s);
+                s = "";
+            }
+        }
+    }
+
+    return output;
+}
+
 void print(std::vector<std::string> letterComb) {
     for (int i = 0; i < letterComb.size(); i++) {
         std::cout << letterComb[i] << " ";
@@ -55,9 +76,9 @@ std::vector<std::string> letterCombinations(std::string digits)
         }
     }
 
-    print(combinationPair);
+    return distribute(combinationPair);
 
-    return {{}};
+    //return {{}};
 }
 
 int main()
@@ -66,7 +87,7 @@ int main()
     std::vector<std::string> lC;
 
     lC = letterCombinations(digits);
-
+    print(lC);
 
     return 0;
 }
