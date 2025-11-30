@@ -2,8 +2,27 @@
 #include <string>
 #include <vector>
 
+void print(std::vector<std::vector<std::string>>& v) {
+    //std::cout << "This was called" << std::endl;
+    for (int i = 0; i < v.size(); i++) {
+        for (int j = 0; j < v[i].size(); j++) {
+            std::cout << v[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+void print(std::vector<std::string> letterComb) {
+    for (int i = 0; i < letterComb.size(); i++) {
+        std::cout << letterComb[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
 std::vector<std::string> letterCombinations(std::string digits)
 {
+    int val;
+    std::vector<std::vector<std::string>> combinationPair;
     std::vector<std::vector<std::string>> numbers = {{"a","b","c"},
                                      {"d","e","f"},
                                      {"g","h","i"},
@@ -23,27 +42,31 @@ std::vector<std::string> letterCombinations(std::string digits)
         if (digits == "9") { return numbers[7]; }
     }
     if (digits.length() == 2) {
-        //There are 56 possible combinations
+        for (int i = 0; i < 2; i++) {
+            val = digits[i] - '0';
+            if (val == 2) { combinationPair.push_back(numbers[0]); }
+            if (val == 3) { combinationPair.push_back(numbers[1]); }
+            if (val == 4) { combinationPair.push_back(numbers[2]); }
+            if (val == 5) { combinationPair.push_back(numbers[3]); }
+            if (val == 6) { combinationPair.push_back(numbers[4]); }
+            if (val == 7) { combinationPair.push_back(numbers[5]); }
+            if (val == 8) { combinationPair.push_back(numbers[6]); }
+            if (val == 9) { combinationPair.push_back(numbers[7]); }
+        }
     }
+
+    print(combinationPair);
 
     return {{}};
 }
 
-void print(std::vector<std::string> letterComb) {
-    for (int i = 0; i < letterComb.size(); i++) {
-        std::cout << letterComb[i] << " ";
-    }
-    std::cout << std::endl;
-}
-
 int main()
 {
-    std::string digits = "9";
+    std::string digits = "23";
     std::vector<std::string> lC;
 
     lC = letterCombinations(digits);
 
-    print(lC);
 
     return 0;
 }
