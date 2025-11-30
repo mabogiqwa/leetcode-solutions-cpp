@@ -29,6 +29,41 @@ std::vector<std::string> distribute(std::vector<std::vector<std::string>> v)
             }
         }
     }
+    if (v.size() == 3) {
+        std::vector<std::string> firstRow = v[0];
+        std::vector<std::string> secondRow = v[1];
+        std::vector<std::string> thirdRow = v[2];
+
+        for (int i = 0; i < firstRow.size(); i++) {
+            for (int j = 0; j < secondRow.size(); j++) {
+                for (int k = 0; k < thirdRow.size(); k++) {
+                    s += firstRow[i] + secondRow[j] + thirdRow[k];
+                    output.push_back(s);
+                    s = "";
+                }
+            }
+        }
+    }
+
+    if (v.size() == 4) {
+        std::vector<std::string> firstRow = v[0];
+        std::vector<std::string> secondRow = v[1];
+        std::vector<std::string> thirdRow = v[2];
+        std::vector<std::string> fourthRow = v[3];
+
+        //O(n^4) - hectic
+        for (int i = 0; i < firstRow.size(); i++) {
+            for (int j = 0; j < secondRow.size(); j++) {
+                for (int k = 0; k < thirdRow.size(); k++) {
+                    for (int v = 0; v < fourthRow.size(); v++) {
+                        s += firstRow[i]+secondRow[j]+thirdRow[k]+fourthRow[v];
+                        output.push_back(s);
+                        s = "";
+                    }
+                }
+            }
+        }
+    }
 
     return output;
 }
@@ -75,15 +110,40 @@ std::vector<std::string> letterCombinations(std::string digits)
             if (val == 9) { combinationPair.push_back(numbers[7]); }
         }
     }
+    if (digits.length() == 3) {
+        for (int i = 0; i < 3; i++) {
+            val = digits[i] - '0';
+            if (val == 2) { combinationPair.push_back(numbers[0]); }
+            if (val == 3) { combinationPair.push_back(numbers[1]); }
+            if (val == 4) { combinationPair.push_back(numbers[2]); }
+            if (val == 5) { combinationPair.push_back(numbers[3]); }
+            if (val == 6) { combinationPair.push_back(numbers[4]); }
+            if (val == 7) { combinationPair.push_back(numbers[5]); }
+            if (val == 8) { combinationPair.push_back(numbers[6]); }
+            if (val == 9) { combinationPair.push_back(numbers[7]); }
+        }
+    }
+    if (digits.length() == 4) {
+        for (int i = 0; i < 4; i++) {
+            val = digits[i] - '0';
+            if (val == 2) { combinationPair.push_back(numbers[0]); }
+            if (val == 3) { combinationPair.push_back(numbers[1]); }
+            if (val == 4) { combinationPair.push_back(numbers[2]); }
+            if (val == 5) { combinationPair.push_back(numbers[3]); }
+            if (val == 6) { combinationPair.push_back(numbers[4]); }
+            if (val == 7) { combinationPair.push_back(numbers[5]); }
+            if (val == 8) { combinationPair.push_back(numbers[6]); }
+            if (val == 9) { combinationPair.push_back(numbers[7]); }
+        }
+    }
+
 
     return distribute(combinationPair);
-
-    //return {{}};
 }
 
 int main()
 {
-    std::string digits = "23";
+    std::string digits = "98";
     std::vector<std::string> lC;
 
     lC = letterCombinations(digits);
