@@ -143,11 +143,33 @@ std::vector<std::string> letterCombinations(std::string digits)
 
 int main()
 {
-    std::string digits = "98";
-    std::vector<std::string> lC;
+    std::string digits = "97";
 
-    lC = letterCombinations(digits);
-    print(lC);
+    print(letterCombinations(digits));
+    std::cout << std::endl;
+    digits = "2";
+    print(letterCombinations(digits));
+    std::cout << std::endl;
+    digits = "23";
+    print(letterCombinations(digits));
+    std::cout << std::endl;
+    digits = "27";
+    print(letterCombinations(digits));
+    std::cout << std::endl;
+    digits = "72";
+    print(letterCombinations(digits));
+    std::cout << std::endl;
+    digits = "234";
+    print(letterCombinations(digits));
+    std::cout << std::endl;
+    digits = "777";
+    print(letterCombinations(digits));
+    std::cout << std::endl;
+    digits = "2345";
+    print(letterCombinations(digits));
+    std::cout << std::endl;
+    digits = "7777";
+    print(letterCombinations(digits));
 
     return 0;
 }
