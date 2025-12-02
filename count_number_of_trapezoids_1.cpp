@@ -23,15 +23,13 @@ void print(std::vector<int>& sums) {
     std::cout << std::endl;
 }
 
-long long combination(int n, int r) {
+long long combination(long long n, long long r) {
     long long result;
-
     result = factorial(n)/(factorial(r)*factorial(n - r));
 
     return result;
 }
 
-//This will be needed for computing the combinations
 int computeDistinctYCoordinates(std::vector<std::vector<int>>& points) {
     int total = 0;
     int initialYVal = points[0][1];
@@ -44,12 +42,11 @@ int computeDistinctYCoordinates(std::vector<std::vector<int>>& points) {
     return total;
 }
 
-//factorial function is buggy
 int countTrapezoids(std::vector<std::vector<int>>& points) {
     int initialYVal = points[0][1];
     std::vector<int> numOfPoints;
     int sum = 0, numOfYPoints;
-    long long multiplication = 1, combination;
+    long long multiplication = 1, combntn, currentVal;
 
     for (int i = 0; i < points.size();i++) {
         if (points[i][1] == initialYVal) {
@@ -64,9 +61,9 @@ int countTrapezoids(std::vector<std::vector<int>>& points) {
 
     numOfYPoints = computeDistinctYCoordinates(points);
     for (int i = 0; i < numOfPoints.size(); i++) {
-        combination = (numOfPoints[i], numOfYPoints);
-        std::cout << "Combination: " << combination << std::endl;
-        multiplication *= combination;
+        currentVal = numOfPoints[i];
+        combntn = combination(currentVal, numOfYPoints);
+        multiplication *= combntn;
     }
 
     return multiplication;
